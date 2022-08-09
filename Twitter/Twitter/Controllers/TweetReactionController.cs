@@ -5,7 +5,8 @@ using Twitter.Services;
 namespace Twitter.Controllers
 {
     [ApiController]
-    [Route("api/Tweets/{username}")]
+    [Route("api/v{version:apiVersion}/Tweets/{username}")]
+    [ApiVersion("1.0")]
     [Authorize]
     public class TweetReactionController : ControllerBase
     {

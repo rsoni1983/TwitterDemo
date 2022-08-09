@@ -6,8 +6,9 @@ using Twitter.Services;
 
 namespace Twitter.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/v{version:apiVersion}/[controller]")]
+    [ApiVersion("1.0")]
     [Authorize]
     public class TweetsController : ControllerBase
     {
@@ -77,7 +78,7 @@ namespace Twitter.Controllers
         public async Task<IActionResult> Reply(string username, int id, AddTweetDto addTweetDto)
         {
             var reactingUserName = User.Identity.Name;
-            var response = await tweetService.ReplyTweet(username, id, addTweetDto);
+            var response = await tweetService.ReplyTweet(username, reactingUserName, id, addTweetDto);
 
             if (!response.Success)
             {

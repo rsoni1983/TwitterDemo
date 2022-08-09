@@ -6,7 +6,8 @@ using Twitter.Services;
 
 namespace Twitter.Controllers
 {
-    [Route("api/Tweets/Users")]
+    [Route("api/v{version:apiVersion}/Tweets/Users")]
+    [ApiVersion("1.0")]
     [ApiController]
     public class AuthController : ControllerBase
     {
